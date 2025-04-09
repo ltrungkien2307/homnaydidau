@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let hasFlipped = false;
     
     // Detect if the device is likely mobile
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
     
     // Set shorter timings for mobile
     const previewTime = isMobile ? 4000 : 5000;
