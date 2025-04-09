@@ -1,0 +1,182 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff0f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px 10px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.instruction {
+    text-align: center;
+    font-size: clamp(18px, 5vw, 24px);
+    margin-bottom: 20px;
+    color: #333;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    justify-content: center;
+    perspective: 1000px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card {
+    width: 100%;
+    aspect-ratio: 2/3;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s, opacity 0.3s, scale 0.3s;
+    cursor: pointer;
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-front {
+    background-color: #dd4578; /* hồng đậm */
+    color: white;
+    transform: rotateY(180deg);
+    padding: 10px;
+    text-align: center;
+    font-size: clamp(12px, 2.5vw, 16px);
+}
+
+.card-back {
+    background-color: #3498db;
+    background-size: cover;
+    background-position: center;
+}
+
+.flipped {
+    transform: rotateY(180deg);
+}
+
+.shuffling {
+    transition: transform 0.6s, left 0.8s, top 0.8s, opacity 0.3s, scale 0.3s;
+}
+
+/* Selected card style */
+.selected {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotateY(180deg);
+    width: clamp(200px, 80vw, 300px);
+    height: clamp(300px, 120vw, 450px);
+    z-index: 10;
+}
+
+.selected .card-front {
+    font-size: clamp(16px, 4vw, 24px);
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#restart {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #e91e63; /* hồng đậm */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: clamp(14px, 4vw, 16px);
+    display: none;
+    z-index: 20;
+}
+
+#restart:hover {
+    background-color: #f06292;
+}
+
+#fireworks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        max-width: 280px;
+    }
+    
+    .card {
+        width: 100%;
+    }
+}
+
+/* Small mobile screens */
+@media (min-width: 361px) and (max-width: 480px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        max-width: 360px;
+    }
+}
+
+/* Medium mobile screens */
+@media (min-width: 481px) and (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        max-width: 500px;
+    }
+}
+
+/* Tablets and larger */
+@media (min-width: 769px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .card {
+        max-width: 180px;
+        max-height: 270px;
+        margin: 0 auto;
+    }
+}
+
+/* Larger screens - optionally make it 2x2 */
+@media (min-width: 1024px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
+    }
+}
