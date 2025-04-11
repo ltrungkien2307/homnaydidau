@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardBacks = document.querySelectorAll('.card-back');
     cardBacks.forEach(back => {
         // Update this path to match your photo location
-        back.style.backgroundImage = "url('images/z6489713203938_b0b847aaae7c13eb07afe210b1bd56ac.jpg')";
+        back.style.backgroundImage = "url('images/z6495980862623_10a7f6529a4a9b03802e23e546331982.jpg')";
     });
 
     // Initial display showing the front of cards
